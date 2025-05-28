@@ -7,7 +7,6 @@ const multer = require('multer');
 const path = require('path');
 const db = require('../db');
 const router = express.Router();
-
 require('dotenv').config();
 
 // ----------------------------------------------------
@@ -264,5 +263,7 @@ router.post('/upload-avatar', authenticateToken, upload.single('avatar'), async 
         res.status(500).json({ message: 'Đã xảy ra lỗi khi cập nhật ảnh đại diện.' });
     }
 });
+
+
 
 module.exports = router;
