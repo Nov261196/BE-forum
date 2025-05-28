@@ -73,5 +73,5 @@ app.use('/api', authRoutes);
 // KHỞI ĐỘNG SERVER
 // ----------------------------------------------------
 app.listen(PORT, () => {
-    console.log(` Server đang chạy tại http://localhost:${PORT}`);
+    console.log(` Server đang chạy tại ${PORT}`);
 });
