@@ -1,12 +1,13 @@
 const mysql = require('mysql2');
-require('dotenv').config();
+require('dotenv').config(); // Đảm bảo dotenv được tải nếu bạn chạy cục bộ
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  port: process.env.DB_PORT || 3306,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  // Sử dụng biến môi trường chuẩn của Railway
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  port: process.env.MYSQL_PORT, // Railway sẽ cung cấp port này, không cần || 11697 ở đây nữa
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 connection.connect(err => {
