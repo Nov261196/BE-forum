@@ -72,7 +72,6 @@ app.use('/api', authRoutes);
 // ----------------------------------------------------
 // KHỞI ĐỘNG SERVER
 // ----------------------------------------------------
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server đang chạy tại http://0.0.0.0:${PORT}`);
-    console.log('PORT env:', process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log(` Server đang chạy tại http://localhost:${process.env.PORT}`);
 });
