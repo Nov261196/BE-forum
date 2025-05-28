@@ -29,7 +29,10 @@ process.on('unhandledRejection', (reason, promise) => {
 // ----------------------------------------------------
 // Cấu hình CORS: QUAN TRỌNG ĐỂ FRONTEND CÓ THỂ GỌI API
 // Đặt app.use(cors()) TRƯỚC các middleware và route khác
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+}));
 
 // Để parse JSON body từ request
 app.use(express.json());
