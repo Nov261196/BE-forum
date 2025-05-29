@@ -173,6 +173,9 @@ router.post('/forgot-password', async (req, res) => {
     });
 
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password.html?token=${token}`;
+    // THÊM DÒNG NÀY ĐỂ DEBUG
+    console.log('DEBUG: Attempting to send email to:', email);
+    console.log('DEBUG: From email:', process.env.EMAIL_USER);
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
