@@ -29,10 +29,24 @@ process.on('unhandledRejection', (reason, promise) => {
 // ----------------------------------------------------
 // Cấu hình CORS: QUAN TRỌNG ĐỂ FRONTEND CÓ THỂ GỌI API
 // Đặt app.use(cors()) TRƯỚC các middleware và route khác
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:5500',
+  'https://www.twentysix.click'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: function (origin, callback) {
+    // Cho phép request không có Origin (như Postman) hoặc từ các origin hợp lệ
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy does not allow this origin: ' + origin));
+    }
+  },
   credentials: true,
 }));
+
 
 // Để parse JSON body từ request
 app.use(express.json());
